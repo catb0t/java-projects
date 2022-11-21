@@ -1,34 +1,56 @@
 package org.catb0t;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 
-public class Game {
+public abstract class Game {
 
     protected Scanner playerInput;
-    protected HashMap<String, ArrayList<String>> storyStrings;
-    protected HashMap<String, ArrayList<String>> promptStrings;
-    public Game () {}
-    public Game (Scanner playerInput) {
+    protected PrintStream gameOutput;
+    protected GameInfo gameInfo;
+    protected GameState gameState;
+    public Game() { this.gameState = new GameState(); }
+    public Game(Scanner playerInput, GameInfo gameInfo) {
         this.playerInput = playerInput;
+        this.gameInfo = gameInfo;
+        this.gameState = new GameState();
     }
 
-    public void playGame () {}
-
-    public void setPromptStrings(HashMap<String, ArrayList<String>> promptStrings) {
-        this.promptStrings = promptStrings;
+    public PrintStream gameOutput() {
+        return gameOutput;
     }
 
-    public void setStoryStrings(HashMap<String, ArrayList<String>> storyStrings) {
-        this.storyStrings = storyStrings;
+    public @NotNull Game setGameOutput(PrintStream gameOutput) {
+        this.gameOutput = gameOutput;
+        return this;
     }
 
-    public void getStoryStrings(HashMap<String, ArrayList<String>> storyStrings) {
-        this.storyStrings = storyStrings;
+    public Scanner playerInput() {
+        return playerInput;
     }
 
-    public void getPromptStrings(HashMap<String, ArrayList<String>> storyStrings) {
-        this.storyStrings = storyStrings;
+    public @NotNull Game setPlayerInput(Scanner playerInput) {
+        this.playerInput = playerInput;
+        return this;
+    }
+
+    public GameInfo gameInfo() {
+        return gameInfo;
+    }
+
+    public @NotNull Game setGameInfo(GameInfo gameInfo) {
+        this.gameInfo = gameInfo;
+        return this;
+    }
+
+    public abstract Game playGame() throws NoSuchFieldException;
+
+    protected void printStory(@NotNull ArrayList<String> story) {
+        System.out.println(
+                String.join("\n", story)
+        );
     }
 }

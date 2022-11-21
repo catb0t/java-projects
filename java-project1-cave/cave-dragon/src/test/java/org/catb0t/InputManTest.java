@@ -37,8 +37,10 @@ class InputManTest {
                 () -> assertTrue(InputMan.inputOk("Right", this.fourNamedRooms)),
                 () -> assertFalse(InputMan.inputOk("Bad", this.fourNamedRooms)),
 
-                () -> assertThrowsExactly(IllegalArgumentException.class, () -> InputMan.inputOk("Doesn't matter", this.emptyNamedRooms)),
-                () -> assertThrowsExactly(IllegalArgumentException.class, () -> InputMan.inputOk("Doesn't matter either", this.emptyAllowed))
+                () -> assertThrowsExactly(IllegalArgumentException.class,
+                        () -> InputMan.inputOk("Doesn't matter", this.emptyNamedRooms)),
+                () -> assertThrowsExactly(IllegalArgumentException.class,
+                        () -> InputMan.inputOk("Doesn't matter either", this.emptyAllowed))
 
                 );
     }

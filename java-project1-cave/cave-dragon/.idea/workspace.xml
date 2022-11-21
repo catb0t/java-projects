@@ -5,20 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa007528-ad56-4733-8215-5d4d95db2709" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/catb0t/CaveDragonGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/catb0t/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/catb0t/InputMan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/catb0t/InputManTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/google_code_gson.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/catb0t/GameInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/catb0t/GameLogicActionDeserializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/game_data.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/catb0t/CaveDragonGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/catb0t/CaveDragonGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/catb0t/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/catb0t/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/catb0t/InputMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/catb0t/InputMan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/catb0t/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/catb0t/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/catb0t/InputManTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/catb0t/InputManTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/catb0t/InputManTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/catb0t/InputManTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -30,6 +37,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="JavaAutoRunManager">
+    <enabled-run-configurations>
+      <run-configuration type="JUnit" name="InputManTest" />
+    </enabled-run-configurations>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -44,12 +56,22 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Downloaded.Files.Path.Enabled": "true",
+    "OverrideImplement.generate.javadoc": "true",
+    "Repository.Attach.Annotations": "true",
+    "Repository.Attach.JavaDocs": "true",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "settings.editor.selected.configurable": "preferences.keymap"
+    "last_opened_file_path": "/home/cat/projects/git/ast-schemas/brat/brat.schema.json",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.fileTypes"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -60,7 +82,7 @@
       <recent name="org.catb0t" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.InputManTest">
+  <component name="RunManager">
     <configuration name="InputManTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cave-dragon" />
       <extension name="coverage">
@@ -120,6 +142,20 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/cave_dragon$InputManTest_inputOk.ic" NAME="InputManTest.inputOk Coverage Results" MODIFIED="1668918111543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
