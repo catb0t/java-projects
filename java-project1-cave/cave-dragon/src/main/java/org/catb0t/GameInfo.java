@@ -1,77 +1,97 @@
 package org.catb0t;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+/**
+ * The action to be taken to process a GameLogicValue.
+ */
 enum GameLogicAction {
     STORY,
     SET_ROOM_LOGIC,
-    ROOM
+    ROOM,
+    INNER_FUNCTION
 }
+
+
+interface ReadonlyGameInfo {
+    Map<String, List<String>> storyStrings ();
+
+    Map<String, List<String>> promptStrings ();
+
+    List<String> roomsFlat ();
+
+    List<GameLogicValue> gameLogicSeq ();
+}
+
+
+/**
+ * A step in the execution of a Game. This object is not currently delegated, so it has keys common to all step objects,
+ * including those which will be null depending on the action.
+ */
 class GameLogicValue {
-    protected String name;
-    protected GameLogicAction action;
-    protected String room;
-    protected String story;
-    protected String prompt;
-    protected ArrayList<GameLogicValue> value_of_function;
-    protected ArrayList<GameLogicValue> function;
+    String                    name;
+    GameLogicAction           action;
+    String                    room;
+    String                    story;
+    String                    prompt;
+    String                    constrain_prompt;
+    List<GameLogicValue>      value_of_function;
+    ArrayList<GameLogicValue> function;
 }
 
-public class GameInfo {
-    protected HashMap<String, ArrayList<String>> storyStrings;
-    protected HashMap<String, ArrayList<String>> promptStrings;
-    protected ArrayList<GameLogicValue> gameLogicSeq;
 
-    public GameInfo(HashMap<String, ArrayList<String>> storyStrings, HashMap<String, ArrayList<String>> promptStrings, ArrayList<GameLogicValue> gameLogicSeq) {
-        this.storyStrings = storyStrings;
-        this.promptStrings = promptStrings;
-        this.gameLogicSeq = gameLogicSeq;
-    }
-}
+class GameInfoImpl implements ReadonlyGameInfo {
+    Map<String, List<String>> storyStrings;
+    Map<String, List<String>> promptStrings;
+    List<String>              roomsFlat;
+    List<GameLogicValue>      gameLogicSeq;
 
-class GameState {
-    public GameState() {
-        this.lastPlayerInput = "";
-        this.namedPlayerInputs = new HashMap<>();
-        this.roomBehaviours = new HashMap<>();
-    }
-
-    public String lastPlayerInput() {
-        return lastPlayerInput;
+    GameInfoImpl (
+            final HashMap<String, ? extends ArrayList<String>> storyStringMap,
+            final Map<String, ? extends ArrayList<String>> promptStringMap,
+            final List<String> rooms,
+            final List<? extends GameLogicValue> gameLogic
+    ) {
+        this.storyStrings  = new HashMap<>(storyStringMap);
+        this.promptStrings = new HashMap<>(promptStringMap);
+        this.roomsFlat     = new ArrayList<>(rooms);
+        this.gameLogicSeq  = new ArrayList<>(gameLogic);
     }
 
-    public @NotNull GameState setLastPlayerInput(String lastPlayerInput) {
-        this.lastPlayerInput = lastPlayerInput;
+    GameInfoImpl (final ReadonlyGameInfo other) {
+        this.storyStrings  = new HashMap<>(other.storyStrings());
+        this.promptStrings = new HashMap<>(other.promptStrings());
+        this.roomsFlat     = new ArrayList<>(other.roomsFlat());
+        this.gameLogicSeq  = new ArrayList<>(other.gameLogicSeq());
+    }
+
+    @Override
+    public Map<String, List<String>> storyStrings () {
+        return this.storyStrings;
+    }
+
+    @Override
+    public Map<String, List<String>> promptStrings () {
+        return this.promptStrings;
+    }
+
+    @Override
+    public List<String> roomsFlat () {
+        return this.roomsFlat;
+    }
+
+    @Override
+    public List<GameLogicValue> gameLogicSeq () {
+        return this.gameLogicSeq;
+    }
+
+    GameInfoImpl setGameLogicSeq (final List<GameLogicValue> logic) {
+        this.gameLogicSeq = logic;
         return this;
     }
-
-    protected String lastPlayerInput;
-    protected HashMap<String, ArrayList<String>> namedPlayerInputs;
-
-    /**
-     * Map room names to their current state. GameLogicV
-     */
-    protected HashMap<String, ArrayList<GameLogicValue>> roomBehaviours;
-
-    protected void updateRoomBehaviour (String roomName, ArrayList<GameLogicValue> newLogic) {
-        this.roomBehaviours.put(roomName, newLogic);
-    }
-
-    public void addNamedPlayerInput (String inputNameKey, String inputContents) {
-        ArrayList<String> gotten = this.namedPlayerInputs
-                .getOrDefault(inputNameKey, new ArrayList<>());
-        if (gotten == null) {
-            throw new IllegalArgumentException(inputNameKey);
-        }
-        gotten.add(inputContents);
-    }
-
-    public String getLastPlayerInputNamed (String inputNameKey) throws IndexOutOfBoundsException {
-        ArrayList<String> allInputs = namedPlayerInputs.getOrDefault(inputNameKey, new ArrayList<>());
-
-        return allInputs.get(allInputs.size() - 1);
-    }
 }
+
+

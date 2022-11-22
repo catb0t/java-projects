@@ -33,17 +33,21 @@
     ]
   },
 
+  "roomsFlat": [ "1", "2" ],
+
   "gameLogicSeq": [
     { "action": "story",
       "room": "dragon_land",
       "story": "introduction",
-      "prompt": "choose_room" },
+      "prompt": "choose_room",
+      "constrain_prompt": "roomsFlat"
+    },
 
     { "action": "set_room_logic",
       "room": "%choose_room",
       "value_of_function": [ { "name": "random_choice" },
-            { "story": "ending_bad" },
-            { "story": "ending_good" }
+            { "story": "ending_bad", "action": "inner_function" },
+            { "story": "ending_good", "action": "inner_function" }
     ] },
 
     { "action": "story",

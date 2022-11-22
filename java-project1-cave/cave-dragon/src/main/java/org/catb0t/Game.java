@@ -1,56 +1,105 @@
 package org.catb0t;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.io.PrintStream;
-import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
-public abstract class Game {
+interface Playable {
 
-    protected Scanner playerInput;
-    protected PrintStream gameOutput;
-    protected GameInfo gameInfo;
-    protected GameState gameState;
-    public Game() { this.gameState = new GameState(); }
-    public Game(Scanner playerInput, GameInfo gameInfo) {
-        this.playerInput = playerInput;
-        this.gameInfo = gameInfo;
-        this.gameState = new GameState();
+    static String ROOMS_FLAT_ACCESS = "roomsFlat";
+
+    static void initialiseRooms (final GameState state, final ReadonlyGameInfo info) {
+        state.initialiseRooms(info.roomsFlat());
     }
 
-    public PrintStream gameOutput() {
-        return gameOutput;
+    static Iterable<GameLogicValue> logicSteps (final ReadonlyGameInfo info) {
+        return info.gameLogicSeq();
     }
 
-    public @NotNull Game setGameOutput(PrintStream gameOutput) {
-        this.gameOutput = gameOutput;
+    Playable playGame () throws NoSuchFieldException;
+
+    void printStory (Iterable<String> storyParts);
+
+    GameState gameState ();
+}
+
+
+public abstract class Game implements Playable {
+
+    GameState gameState;
+    Random    rand;
+    private Scanner          playerInput;
+    private PrintStream      gameOutput;
+    private ReadonlyGameInfo gameInfo;
+
+    Game () {
+        this.gameState = new GameStateImpl();
+        this.rand      = new Random();
+    }
+
+    protected Game (final Scanner scanner, final ReadonlyGameInfo info) {
+        this.setPlayerInput(scanner);
+        this.setGameInfo(info);
+        this.gameState = new GameStateImpl();
+        this.rand      = new Random();
+    }
+
+    public final Game setPlayerInput (final Scanner scanner) {
+        this.playerInput = scanner;
         return this;
     }
 
-    public Scanner playerInput() {
-        return playerInput;
-    }
-
-    public @NotNull Game setPlayerInput(Scanner playerInput) {
-        this.playerInput = playerInput;
+    public final Game setGameInfo (final ReadonlyGameInfo info) {
+        this.gameInfo = info;
         return this;
     }
 
-    public GameInfo gameInfo() {
-        return gameInfo;
+    Game (final Game other) {
+        this.playerInput = other.playerInput();
+        this.gameOutput  = other.gameOutput();
+        this.gameInfo    = new GameInfoImpl(other.gameInfo());
+        this.gameState   = new GameStateImpl(other.gameState());
+        this.rand        = other.rand;
     }
 
-    public @NotNull Game setGameInfo(GameInfo gameInfo) {
-        this.gameInfo = gameInfo;
+    Scanner playerInput () {
+        return this.playerInput;
+    }
+
+    PrintStream gameOutput () {
+        return this.gameOutput;
+    }
+
+    ReadonlyGameInfo gameInfo () {
+        return this.gameInfo;
+    }
+
+    Game setGameOutput (final PrintStream stream) {
+        this.gameOutput = stream;
         return this;
     }
 
-    public abstract Game playGame() throws NoSuchFieldException;
+    @Override
+    public String toString () {
+        return "Game{" +
+               "playerInput=" + this.playerInput() +
+               ", gameOutput=" + this.gameOutput() +
+               ", gameInfo=" + this.gameInfo() +
+               ", gameState=" + this.gameState() +
+               '}';
+    }
 
-    protected void printStory(@NotNull ArrayList<String> story) {
-        System.out.println(
-                String.join("\n", story)
-        );
+    @Override
+    public void printStory (Iterable<String> storyParts) {
+        this.gameOutput().println(String.join("\n", storyParts));
+    }
+
+    @Override
+    public GameState gameState () {
+        return this.gameState;
+    }
+
+    void setGameState (final GameState state) {
+        this.gameState = state;
     }
 }

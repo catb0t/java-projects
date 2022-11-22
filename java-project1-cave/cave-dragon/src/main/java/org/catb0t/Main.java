@@ -2,14 +2,14 @@ package org.catb0t;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Objects;
 import java.util.Scanner;
 
 
@@ -19,31 +19,38 @@ public class Main {
 
     /**
      * Run the game based on data from game_data.json.
-     * @throws IOException
+     *
+     * @throws IOException          indicates a failure to read the game data file.
+     * @throws NoSuchFieldException indicates a missing or misdirected field in the game data.
      */
-    public static void main(String[] args) throws IOException, NoSuchFieldException {
+    public static void main (final String[] args) throws IOException, NoSuchFieldException {
 
-        URI gameDataURI;
+        final @Nullable var dataResource = Main.class.getResource(Main.gameDataFilename);
+        if (dataResource == null) {
+            System.err.println("game data resource not found");
+            System.exit(1);
+        }
+
+        final URI gameDataURI;
         try {
-            gameDataURI = Objects.requireNonNull(
-                    Main.class.getResource(gameDataFilename)
-            ).toURI();
-        } catch (URISyntaxException e) {
-            System.err.println(e.toString());
+            gameDataURI = dataResource.toURI();
+        } catch (final URISyntaxException e) {
+            System.err.println(e);
             System.exit(1);
             return;
         }
-        String rawGameData = Files.readString(Path.of(gameDataURI));
 
-        @NotNull Gson gson = new GsonBuilder().registerTypeAdapter(
-                GameLogicAction.class,
-                new GameLogicActionDeserializer()
-        ).create();
-        GameInfo gameInfo = gson.fromJson(rawGameData, GameInfo.class);
+        final String rawGameData = Files.readString(Path.of(gameDataURI));
 
-        //System.out.println(gameInfo.gameLogicSeq.get(0).function);
+        final Gson gson = new GsonBuilder()
+                                  .registerTypeAdapter(
+                                          GameLogicAction.class,
+                                          new GameLogicActionDeserializer()
+                                  ).create();
+        final ReadonlyGameInfo gameInfo = gson.fromJson(rawGameData, GameInfoImpl.class);
 
-        @NotNull Scanner input = new Scanner(System.in);
+
+        final Scanner input = new Scanner(System.in, StandardCharsets.UTF_8);
         new CaveDragonGame()
                 .setGameOutput(System.out)
                 .setPlayerInput(input)
