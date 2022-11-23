@@ -28,6 +28,7 @@ public class Main {
     public static void main (final String[] args) throws IOException, NoSuchFieldException {
 
         // TODO: game data path from argv[1]
+        // TODO: game data handler interface
         final @Nullable var dataResource = Main.class.getResource(Main.gameDataFilename);
         if (dataResource == null) {
             System.err.println("game data resource not found");

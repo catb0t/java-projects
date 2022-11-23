@@ -15,7 +15,7 @@
       "He says, \"Why hello there... did you really think I was",
       "going to eat you?\" His booming voice echoes in the large cave.",
       "You are speechless in shock. The huge dragon takes pity on you.",
-      "For the trouble, human, let me give you some of my riches.",
+      "\"For the trouble, human, let me give you some of my riches.\"",
       "The dragon produces a heaping claw-ful of gold and precious gems.",
       "It barely fits in your satchel.",
       "\"On your way, human\", says the dragon, \"and don't go into that other cave!\""
@@ -33,7 +33,7 @@
     ]
   },
 
-  "roomsFlat": [ "1", "2" ],
+  "roomsFlat": [ "1", "2", true, null, -1 ],
 
   "gameLogicSeq": [
     { "action": "story",
