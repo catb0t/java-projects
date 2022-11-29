@@ -14,22 +14,35 @@ class DefinedName implements Serializable {
     final Long                            longValue;
     final Double                          doubleValue;
     final String                          stringValue;
-    String name;
+    final String                          name;
 
     public DefinedName () {
-                              this.name = "NO ARGS CONSTRUCTION";
-                              this.type = "string";
-                          }
+        this.name         = "NO ARGS CONSTRUCTION";
+        this.type         = "string";
+        this.intValue     = null;
+        this.longValue    = null;
+        this.doubleValue  = null;
+        this.listmapValue = null;
+        this.stringValue  = null;
+    }
 
     public DefinedName (final String name, final String stringValue) {
-        this.name        = name;
-        this.stringValue = stringValue;
-        this.type        = "string";
+        this.name         = name;
+        this.stringValue  = stringValue;
+        this.type         = "string";
+        this.intValue     = null;
+        this.longValue    = null;
+        this.doubleValue  = null;
+        this.listmapValue = null;
     }
 
     public DefinedName (final String name, final Long longValue) {
-        this.name      = name;
-        this.longValue = longValue;
-        this.type      = "long";
+        this.name         = name;
+        this.longValue    = longValue;
+        this.type         = "long";
+        this.intValue     = null;
+        this.stringValue  = null;
+        this.doubleValue  = null;
+        this.listmapValue = null;
     }
 }

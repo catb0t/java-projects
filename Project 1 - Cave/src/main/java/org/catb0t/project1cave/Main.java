@@ -50,7 +50,6 @@ public class Main {
             ).create();
         final ReadonlyGameInfo gameInfo = gson.fromJson(rawGameData, GameInfoImpl.class);
 
-
         final Scanner input = new Scanner(System.in, StandardCharsets.UTF_8);
         new CaveDragonsGame()
             .setGameOutput(System.out)

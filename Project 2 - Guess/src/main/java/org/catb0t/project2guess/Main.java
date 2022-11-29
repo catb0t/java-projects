@@ -15,7 +15,7 @@ public class Main {
     static final String GAME_RULES_BASE       = "game_rules";
     static final String GAME_STRING_KEYS_BASE = "guess_strings";
 
-    public static void main (final String[] args) throws IOException, URISyntaxException {
+    public void main (final String[] args) throws IOException, URISyntaxException {
 
         // TODO: user select locale
         final Locale currentLocale = new Locale("de", "DE");

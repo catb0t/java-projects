@@ -81,6 +81,12 @@ public class Configuration implements Configurable {
     }
 
     @Override
+    public Configurable withRules (final GameRules newRules) {
+        throw new IllegalArgumentException("unimplemented");
+
+    }
+
+    @Override
     public GameRules rules () {
         return this.rules();
     }
@@ -88,7 +94,7 @@ public class Configuration implements Configurable {
     @Override
     public Configurable setRulesBasename (final Path p) {
         throw new IllegalArgumentException("unimplemented");
-        ;
+
     }
 
     @Override
@@ -99,19 +105,6 @@ public class Configuration implements Configurable {
     @Override
     public String rulesBasename () {
         return this.rulesBasename;
-    }
-
-
-    @Override
-    public Configurable saveRules (final Path p) {
-        throw new IllegalArgumentException("unimplemented");
-
-    }
-
-    @Override
-    public Configurable withRules (final GameRules newRules) {
-        throw new IllegalArgumentException("unimplemented");
-
     }
 
     public String pathSep () {
