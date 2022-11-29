@@ -1,5 +1,0 @@
-rootProject.name = 'java-projects'
-include 'project-modules'
-include 'project2guess'
-include 'project1cave'
-

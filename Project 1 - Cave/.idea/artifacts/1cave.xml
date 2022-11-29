@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="1cave">
+    <output-path>$PROJECT_DIR$/out/artifacts/1cave</output-path>
+    <root id="archive" name="1cave.jar">
+      <element id="module-output" name="main" />
+    </root>
+  </artifact>
+</component>
