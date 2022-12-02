@@ -15,6 +15,7 @@ class DefinedName implements Serializable {
     final Double                          doubleValue;
     final String                          stringValue;
     final String                          name;
+    final Boolean                         boolValue;
 
     public DefinedName () {
         this.name         = "NO ARGS CONSTRUCTION";
@@ -24,6 +25,7 @@ class DefinedName implements Serializable {
         this.doubleValue  = null;
         this.listmapValue = null;
         this.stringValue  = null;
+        this.boolValue    = null;
     }
 
     public DefinedName (final String name, final String stringValue) {
@@ -34,6 +36,7 @@ class DefinedName implements Serializable {
         this.longValue    = null;
         this.doubleValue  = null;
         this.listmapValue = null;
+        this.boolValue    = null;
     }
 
     public DefinedName (final String name, final Long longValue) {
@@ -44,5 +47,7 @@ class DefinedName implements Serializable {
         this.stringValue  = null;
         this.doubleValue  = null;
         this.listmapValue = null;
+        this.boolValue    = null;
     }
+
 }

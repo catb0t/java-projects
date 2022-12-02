@@ -15,13 +15,13 @@ public class Main {
     static final String GAME_RULES_BASE       = "game_rules";
     static final String GAME_STRING_KEYS_BASE = "guess_strings";
 
-    public void main (final String[] args) throws IOException, URISyntaxException {
+    public static void main (final String[] args) throws IOException, URISyntaxException {
 
         // TODO: user select locale
-        final Locale currentLocale = new Locale("de", "DE");
+        final Locale currentLocale = new Locale("en", "US");
 
         //FileSystems.getDefault().getSeparator();
-        // i guess you can't use Windows file separator inside Resource path?
+        // you can't use Windows file separator inside Resource path, it's just an escape
         final var pathSep = "/";
         final Configurable config = new Configuration(
             Main.GAME_RULES_BASE, pathSep, Main.JSON_EXT
@@ -38,11 +38,6 @@ public class Main {
             "$max_target", new DefinedName("$min_target", 20L),
             "$player_name", new DefinedName("$player_name", "Cat")
         );
-
-        for (int i = 0; i < 10; i++) {
-            System.out.println();
-        }
-
 
         game.playGame();
     }

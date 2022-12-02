@@ -12,8 +12,6 @@ public record GameRules(
     Boolean canPlayAgain,
     String validInputPattern,
     Boolean isInputPatternFullMatch,
-    List<DefinedName> declaredNames,
-    List<List<List<String>>> eachIteration,
-    List<String> winCondition
+    List<DefinedName> declaredNames
 ) {
 }

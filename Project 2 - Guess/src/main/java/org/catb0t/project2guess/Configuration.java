@@ -46,7 +46,6 @@ public class Configuration implements Configurable {
             Configuration.stringFromResource(this.rulesBasename, this.pathSep, this.fileExt),
             GameRules.class
         );
-
     }
 
     protected static String stringFromResource (
@@ -88,7 +87,7 @@ public class Configuration implements Configurable {
 
     @Override
     public GameRules rules () {
-        return this.rules();
+        return this.rules;
     }
 
     @Override
