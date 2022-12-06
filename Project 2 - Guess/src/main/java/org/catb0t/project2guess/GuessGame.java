@@ -2,7 +2,7 @@
  * Copyright (c) 2022 Cat Stevens. All rights reserved.
  */
 
-package org.catb0t;
+package org.catb0t.project2guess;
 
 import org.jetbrains.annotations.*;
 
@@ -12,8 +12,13 @@ import java.util.regex.*;
 import java.util.stream.*;
 
 public class GuessGame {
-    static final DefinedName UNKNOWN_NAME = new DefinedName("++UNKNOWN VARIABLE++",
-        "++UNKNOWN VALUE++");
+    static final Pattern     DOLLAR_NAME_REFERENCE = Pattern.compile(
+        Pattern.quote("$") + "[a-zA-Z_0-9]+"
+    );
+    static final DefinedName UNKNOWN_NAME          = new DefinedName(
+        "++UNKNOWN VARIABLE++",
+        "++UNKNOWN VALUE++"
+    );
 
     static final  String                   DEFINE_NAMES_KEY = "define_names";
     final         Map<String, DefinedName> nameTable;
@@ -106,7 +111,7 @@ public class GuessGame {
 
 
     public String replaceDollarNameReferences (final CharSequence source) {
-        final Matcher matcher = Ranged.DOLLAR_NAME_REFERENCE.matcher(source);
+        final Matcher matcher = GuessGame.DOLLAR_NAME_REFERENCE.matcher(source);
 
         return matcher.replaceAll(mr -> this.dollarNameLookup(mr.group()));
     }

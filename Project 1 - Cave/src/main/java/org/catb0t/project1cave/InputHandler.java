@@ -32,7 +32,8 @@ enum InputHandler {
         if (!allowedSet.contains(str)) {
             notOkAction.run();
             return false;
+        } else {
+            return true;
         }
-        return true;
     }
 }
