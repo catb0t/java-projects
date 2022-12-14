@@ -5,73 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a7465d4-269f-4ac9-b43c-3a3b397e27cf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/test/org/catb0t/GameStateImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/ClojureProjectResolveSettings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/../LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/.idea/artifacts/1cave.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/.idea/artifacts/1cave.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/CaveDragonsGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/CaveDragonsGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/GameInfoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/GameInfoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/GameLogicAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/GameLogicAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/GameLogicActionDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/GameLogicActionDeserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/GameLogicValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/GameLogicValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/GameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/GameStateImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/GameStateImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/InputHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/InputHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/Playable.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/Playable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/ReadonlyGameInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/ReadonlyGameInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/org/catb0t/project1cave/package-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/test/org.cab0t/InputHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/src/main/java/test/org.cab0t/InputHandlerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/src/main/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/src/main/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project 1 - Cave/src/main/resources/game_data.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Project 1 - Cave/src/main/resources/game_data.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Project 5 - Hangman/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/.idea/copyright/Copyright1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/.idea/copyright/Copyright1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/.idea/copyright/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/.idea/copyright/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/.idea/jsonSchemas.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/.idea/jsonSchemas.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/.idea/scopes/Scope1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/.idea/scopes/Scope1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/Configurable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/Configurable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/Configuration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/DefinedName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/DefinedName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/GameRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/GameRules.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/GuessGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/GuessGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/Localiser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/Localiser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/LoopableGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/LoopableGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/package-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/game_rules.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/resources/game_rules.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/guess_strings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/resources/guess_strings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/guess_strings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/resources/guess_strings.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/guess_strings_de_DE.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/resources/guess_strings_de_DE.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/guess_strings_en_US.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/resources/guess_strings_en_US.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,19 +44,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/theun/projects/git/java-projects/Project 2 - Guess",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "rearrange.code.on.save": "true",
-    "settings.editor.selected.configurable": "actions.on.save"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/theun/projects/git/java-projects/Project 2 - Guess&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/org/catb0t/project2guess/" />
