@@ -7,4 +7,5 @@ package project5human;
  * done by deciding the word at the last possible moment.
  */
 public class Human implements project5human.Player {
+
 }

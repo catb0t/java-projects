@@ -7,4 +7,25 @@ package project5human;
  * {@link project5human.Host} supports cheating hangmen.
  */
 public class Bot implements project5human.Player {
+    /**
+     * @param phraseLength the number of characters in the phrase
+     * @param hangedManAmount how dead the hangman already is
+     *
+     * @return the player's guess, either a full guess
+     */
+    @Override
+    public project5human.GuessValue sendGuessMessage (
+        final char phraseLength,
+        final char hangedManAmount
+    ) {
+        return null;
+    }
+
+    /**
+     * @return the name of the player
+     */
+    @Override
+    public String name () {
+        return "a robot";
+    }
 }
