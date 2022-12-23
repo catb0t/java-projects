@@ -1,4 +1,4 @@
-package project5human;
+package org.catb0t.project5human;
 
 /**
  * How dead the hangman is, out of 255. This value can increase by any step at one time.

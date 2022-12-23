@@ -1,4 +1,4 @@
-package project5human;
+package org.catb0t.project5human;
 
 import java.util.*;
 
@@ -10,20 +10,20 @@ import java.util.*;
  * <p>
  * CanonicalHost supports hangmen cheating at the game.
  */
-public class CanonicalHost implements project5human.Host {
-    private final Random                     rand = new Random();
-    private final Map<Byte, List<String>>    dictionary;
-    private final List<project5human.Player> guessers;
-    private final project5human.Player       executioner;
-    project5human.HangedManState hangedMan = new project5human.HangedManState();
+public class CanonicalHost implements Host {
+    private final Random                  rand = new Random();
+    private final Map<Byte, List<String>> dictionary;
+    private final List<? extends Player>  guessers;
+    private final Player                  executioner;
+    HangedManState hangedMan = new HangedManState();
     private Byte    chosenPhraseLength;
     private String  chosenPhrase;
     private boolean isCheatingWithPhrases         = false;
     private boolean isCheatingWithHangedManAmount = false;
 
     CanonicalHost (
-        final project5human.Player executionerPlayer,
-        final List<project5human.Player> guesserPlayers,
+        final Player executionerPlayer,
+        final List<? extends Player> guesserPlayers,
         final Map<Byte, List<String>> phraseDictionary,
         final boolean canCheatAtDrawing,
         final boolean canCheatPhrases
@@ -31,19 +31,15 @@ public class CanonicalHost implements project5human.Host {
         this.dictionary                    = Collections.unmodifiableMap(phraseDictionary);
         this.isCheatingWithPhrases         = canCheatPhrases;
         this.isCheatingWithHangedManAmount = canCheatAtDrawing;
-        if ((guesserPlayers == null) || guesserPlayers.isEmpty() || (executionerPlayer == null) ||
-            guesserPlayers.contains(executionerPlayer)) {
-            throw new IllegalArgumentException("assertion 'guesserPlayers is not null or empty " +
-                                               "and executionerPlayer is not null and " +
-                                               "guesserPlayers does not contain " +
-                                               "executionerPlayer' failed");
-        }
-        this.guessers    = guesserPlayers;
+
+        Host.throwIfInvalidPlayerLayout(guesserPlayers, executionerPlayer);
+
+        this.guessers    = Collections.unmodifiableList(guesserPlayers);
         this.executioner = executionerPlayer;
     }
 
     @Override
-    public byte hangedManAmount () {
+    public char hangedManAmount () {
         return this.hangedMan.hangedManState;
     }
 
@@ -71,17 +67,32 @@ public class CanonicalHost implements project5human.Host {
     }
 
     @Override
+    public void changeCheatingWithPhrases (final boolean val) {
+        this.isCheatingWithPhrases = val;
+    }
+
+    @Override
+    public boolean isCheatingWithHangedManAmount () {
+        return this.isCheatingWithHangedManAmount;
+    }
+
+    @Override
+    public void changeCheatingWithHangedManAmount (final boolean val) {
+        this.isCheatingWithHangedManAmount = val;
+    }
+
+    @Override
     public void doGameIteration () {
         // ...??
         final var currentTurnPlayer = this.guessers.get(0);
         final var turnGuess = currentTurnPlayer.sendGuessMessage(
-            this.chosenPhraseLength.byteValue(),
+            this.chosenPhraseLength,
             this.hangedManAmount()
         );
 
         // TODO: handle cheating host
-        if (! this.isCheatingWithPhrases()) {
-            if (turnGuess.isFullGuess() && this.chosenPhrase.equals(turnGuess.fullGuess)) {
+        if (! this.isCheatingWithPhrases) {
+            if (turnGuess.isFullGuess() && this.chosenPhrase.equals(turnGuess.fullGuess())) {
                 System.out.println("PLAYER WINS!! " + currentTurnPlayer.name());
             } else if (this.isCorrectCharacterGuess(turnGuess)) {
                 System.out.println("guessed right! :) " + currentTurnPlayer.name());
@@ -94,7 +105,7 @@ public class CanonicalHost implements project5human.Host {
 
     @Override
     public boolean isCorrectCharacterGuess (GuessValue guess) {
-        return this.chosenPhrase.contains(guess.guessedCharacter);
+        return this.chosenPhrase.indexOf(guess.characterGuess()) != - 1;
     }
 
     @Override

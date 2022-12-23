@@ -1,4 +1,4 @@
-package project5human;
+package org.catb0t.project5human;
 
 public record GuessValue( String fullGuess, char characterGuess ) {
     boolean isFullGuess () {

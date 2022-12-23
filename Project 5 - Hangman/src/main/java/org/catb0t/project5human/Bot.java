@@ -1,4 +1,4 @@
-package project5human;
+package org.catb0t.project5human;
 
 /**
  * A player controlled automatically by the computer, but without access to all the internal game
@@ -6,7 +6,7 @@ package project5human;
  * or be players making guesses. This player can cheat as hangman, if the current
  * {@link project5human.Host} supports cheating hangmen.
  */
-public class Bot implements project5human.Player {
+public class Bot implements Player {
     /**
      * @param phraseLength the number of characters in the phrase
      * @param hangedManAmount how dead the hangman already is
@@ -14,8 +14,8 @@ public class Bot implements project5human.Player {
      * @return the player's guess, either a full guess
      */
     @Override
-    public project5human.GuessValue sendGuessMessage (
-        final char phraseLength,
+    public GuessValue sendGuessMessage (
+        final byte phraseLength,
         final char hangedManAmount
     ) {
         return null;
