@@ -1,5 +1,7 @@
 package org.catb0t.project5human;
 
+import java.util.*;
+
 /**
  * A player controlled automatically by the computer, but without access to all the internal game
  * state that a {@link project5human.Host} is aware of. Bot players are able to be the "hangman",
@@ -8,7 +10,7 @@ package org.catb0t.project5human;
  */
 public class Bot implements Player {
     /**
-     * @param phraseLength the number of characters in the phrase
+     * @param phraseLength    the number of characters in the phrase
      * @param hangedManAmount how dead the hangman already is
      *
      * @return the player's guess, either a full guess
@@ -16,6 +18,7 @@ public class Bot implements Player {
     @Override
     public GuessValue sendGuessMessage (
         final byte phraseLength,
+        final List<Character> phraseState,
         final char hangedManAmount
     ) {
         return null;

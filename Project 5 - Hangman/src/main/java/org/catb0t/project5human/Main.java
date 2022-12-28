@@ -11,7 +11,7 @@ public class Main {
     private static final int wordsMeanLineLength        = 9;
     private static final int wordsCountDifferentLengths = 21;
 
-    public static void main (String[] args) throws URISyntaxException, IOException {
+    public static void main (final String[] args) throws URISyntaxException, IOException {
 
         final URI wordsResource = Objects.requireNonNull(
             Thread.currentThread().getContextClassLoader().getResource(Main.wordsName)

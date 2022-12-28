@@ -1,6 +1,7 @@
 package org.catb0t.project5human;
 
 import java.util.*;
+import java.util.regex.*;
 
 /**
  * The CanonicalHost is the built-in default implementation of a Host for Hangman.
@@ -16,10 +17,12 @@ public class CanonicalHost implements Host {
     private final List<? extends Player>  guessers;
     private final Player                  executioner;
     HangedManState hangedMan = new HangedManState();
-    private Byte    chosenPhraseLength;
-    private String  chosenPhrase;
-    private boolean isCheatingWithPhrases         = false;
-    private boolean isCheatingWithHangedManAmount = false;
+    private Byte            chosenPhraseLength;
+    private String          chosenPhrase;
+    private List<Character> phraseGuessState;
+    private boolean         isCheatingWithPhrases         = false;
+    private boolean         isCheatingWithHangedManAmount = false;
+    private int             currentPlayerIndex            = 0;
 
     CanonicalHost (
         final Player executionerPlayer,
@@ -28,14 +31,33 @@ public class CanonicalHost implements Host {
         final boolean canCheatAtDrawing,
         final boolean canCheatPhrases
     ) {
+        Host.throwIfInvalidPlayerLayout(guesserPlayers, executionerPlayer);
+
         this.dictionary                    = Collections.unmodifiableMap(phraseDictionary);
         this.isCheatingWithPhrases         = canCheatPhrases;
         this.isCheatingWithHangedManAmount = canCheatAtDrawing;
 
-        Host.throwIfInvalidPlayerLayout(guesserPlayers, executionerPlayer);
-
         this.guessers    = Collections.unmodifiableList(guesserPlayers);
         this.executioner = executionerPlayer;
+
+        final var phraseLengths = CanonicalHost.phraseLengthRange(this.dictionary.keySet());
+
+        this.chosenPhraseLength = (byte) this.rand.nextInt(phraseLengths.get(0),
+            phraseLengths.get(1) + 1);
+
+        this.phraseGuessState = new ArrayList<>(this.chosenPhraseLength);
+        for (final byte i = 0; i < this.chosenPhraseLength; i++) {
+            this.phraseGuessState.add('.');
+        }
+    }
+
+    private static List<Byte> phraseLengthRange (final Collection<Byte> dictKeys) {
+        return List.of(
+            dictKeys.stream().min(Comparator.naturalOrder())
+                    .orElseThrow(),
+            dictKeys.stream().max(Comparator.naturalOrder())
+                    .orElseThrow()
+        )
     }
 
     @Override
@@ -84,9 +106,12 @@ public class CanonicalHost implements Host {
     @Override
     public void doGameIteration () {
         // ...??
-        final var currentTurnPlayer = this.guessers.get(0);
+        final var currentTurnPlayer = this.guessers.get(this.currentPlayerIndex);
+        this.currentPlayerIndex++;
+
         final var turnGuess = currentTurnPlayer.sendGuessMessage(
             this.chosenPhraseLength,
+            this.phraseGuessState,
             this.hangedManAmount()
         );
 
@@ -96,10 +121,39 @@ public class CanonicalHost implements Host {
                 System.out.println("PLAYER WINS!! " + currentTurnPlayer.name());
             } else if (this.isCorrectCharacterGuess(turnGuess)) {
                 System.out.println("guessed right! :) " + currentTurnPlayer.name());
+
+                final var positions = this.characterGuessLocations(turnGuess);
+                for (final var pos :
+                    positions) {
+                    this.phraseGuessState.set(pos, turnGuess.characterGuess());
+                }
+
             } else {
                 System.out.println("wrong guess :( " + currentTurnPlayer.name());
                 // TODO wrong guess
             }
+        }
+    }
+
+    /**
+     * Reveal all the places a character guess is found within the chosen phrase.
+     *
+     * @param guess the player's guess information
+     *
+     * @return all the correct guess locations in the phrase
+     */
+    public List<Integer> characterGuessLocations (GuessValue guess) {
+        if (this.isCheatingWithPhrases) {
+            throw new IllegalStateException("unimplemented");
+        } else {
+            final List<Integer> result = new ArrayList<>(this.chosenPhraseLength);
+
+            for (int i = 0; i < this.chosenPhrase.length(); i++) {
+                if (this.chosenPhrase.charAt(i) == guess.characterGuess()) {
+                    result.add(i);
+                }
+            }
+            return result;
         }
     }
 

@@ -1,6 +1,7 @@
 package org.catb0t.project5human;
 
 import java.io.*;
+import java.util.*;
 
 /**
  * A player controlled interactively by a person using a keyboard. Human players are able to be
@@ -10,7 +11,7 @@ import java.io.*;
  */
 public class Human implements Player {
 
-    private final String      name;
+    private final String name;
     private final InputStream in;
     private final PrintStream out;
 
@@ -21,7 +22,11 @@ public class Human implements Player {
     }
 
     @Override
-    public GuessValue sendGuessMessage (final byte phraseLength, final char hangedManAmount) {
+    public GuessValue sendGuessMessage (
+        final byte phraseLength,
+        final List<Character> phraseState,
+        final char hangedManAmount
+    ) {
         return null;
     }
 
