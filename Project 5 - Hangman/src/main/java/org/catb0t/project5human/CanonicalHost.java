@@ -1,7 +1,7 @@
 package org.catb0t.project5human;
 
 import java.util.*;
-import java.util.regex.*;
+import java.util.stream.*;
 
 /**
  * The CanonicalHost is the built-in default implementation of a Host for Hangman.
@@ -13,10 +13,10 @@ import java.util.regex.*;
  */
 public class CanonicalHost implements Host {
     private final Random                  rand = new Random();
-    private final Map<Byte, List<String>> dictionary;
     private final List<? extends Player>  guessers;
     private final Player                  executioner;
     HangedManState hangedMan = new HangedManState();
+    private       Map<Byte, List<String>> dictionary;
     private Byte            chosenPhraseLength;
     private String          chosenPhrase;
     private List<Character> phraseGuessState;
@@ -24,7 +24,42 @@ public class CanonicalHost implements Host {
     private boolean         isCheatingWithHangedManAmount = false;
     private int             currentPlayerIndex            = 0;
 
-    CanonicalHost (
+    public CanonicalHost () {
+        this.executioner = new Bot();
+        this.guessers    = List.of(new Bot(), new Bot());
+        this.dictionary  = Map.ofEntries(
+            Map.entry((byte) 2, List.of("aa", "bb")),
+            Map.entry((byte) 3, List.of("abc")),
+            Map.entry((byte) 4, List.of("data", "adad"))
+        );
+
+        this.setupPhraseFields();
+    }
+
+    private void setupPhraseFields () {
+        final var phraseLengths = CanonicalHost.phraseLengthRange(this.dictionary.keySet());
+
+        this.chosenPhraseLength = (byte) this.rand.nextInt(
+            phraseLengths.get(0),
+            phraseLengths.get(1) + 1
+        );
+
+        this.phraseGuessState = new ArrayList<>(this.chosenPhraseLength);
+        for (byte n = 0; n < this.chosenPhraseLength; n++) {
+            this.phraseGuessState.add('.');
+        }
+    }
+
+    private static List<Byte> phraseLengthRange (final Collection<Byte> dictKeys) {
+        return List.of(
+            dictKeys.stream().min(Comparator.naturalOrder())
+                    .orElseThrow(),
+            dictKeys.stream().max(Comparator.naturalOrder())
+                    .orElseThrow()
+        );
+    }
+
+    public CanonicalHost (
         final Player executionerPlayer,
         final List<? extends Player> guesserPlayers,
         final Map<Byte, List<String>> phraseDictionary,
@@ -40,24 +75,37 @@ public class CanonicalHost implements Host {
         this.guessers    = Collections.unmodifiableList(guesserPlayers);
         this.executioner = executionerPlayer;
 
-        final var phraseLengths = CanonicalHost.phraseLengthRange(this.dictionary.keySet());
-
-        this.chosenPhraseLength = (byte) this.rand.nextInt(phraseLengths.get(0),
-            phraseLengths.get(1) + 1);
-
-        this.phraseGuessState = new ArrayList<>(this.chosenPhraseLength);
-        for (final byte i = 0; i < this.chosenPhraseLength; i++) {
-            this.phraseGuessState.add('.');
-        }
+        this.setupPhraseFields();
     }
 
-    private static List<Byte> phraseLengthRange (final Collection<Byte> dictKeys) {
-        return List.of(
-            dictKeys.stream().min(Comparator.naturalOrder())
-                    .orElseThrow(),
-            dictKeys.stream().max(Comparator.naturalOrder())
-                    .orElseThrow()
-        )
+    public void _changeDictionary (Map<Byte, List<String>> replacement) {
+        this.dictionary = Collections.unmodifiableMap(replacement);
+
+        this.setupPhraseFields();
+    }
+
+    public List<? extends Player> guessers () {
+        return this.guessers;
+    }
+
+    public int currentPlayerIndex () {
+        return this.currentPlayerIndex;
+    }
+
+    public void _setGamePhrase (final String phrase) {
+        final var length = Byte.valueOf((byte) phrase.length());
+
+        this.throwIfInvalidLength(length);
+        this.chosenPhraseLength = length;
+        this.chosenPhrase       = phrase;
+    }
+
+    private void throwIfInvalidLength (final Byte phraseLength) {
+        if (! this.dictionary.containsKey(phraseLength)) {
+            throw new IllegalArgumentException(
+                "attempt to pick non-existent phrase of length " + phraseLength +
+                " from dictionary");
+        }
     }
 
     @Override
@@ -107,7 +155,7 @@ public class CanonicalHost implements Host {
     public void doGameIteration () {
         // ...??
         final var currentTurnPlayer = this.guessers.get(this.currentPlayerIndex);
-        this.currentPlayerIndex++;
+        this.incrementAndWrapPlayerIndex();
 
         final var turnGuess = currentTurnPlayer.sendGuessMessage(
             this.chosenPhraseLength,
@@ -135,8 +183,17 @@ public class CanonicalHost implements Host {
         }
     }
 
+    public void incrementAndWrapPlayerIndex () {
+        if (this.currentPlayerIndex >= this.guessers.size()) {
+            this.currentPlayerIndex = 0;
+        } else {
+            this.currentPlayerIndex++;
+        }
+    }
+
     /**
-     * Reveal all the places a character guess is found within the chosen phrase.
+     * Reveal all the places a character guess is found within the chosen phrase. Cheating is not
+     * currently implemented for this method.
      *
      * @param guess the player's guess information
      *
@@ -146,14 +203,15 @@ public class CanonicalHost implements Host {
         if (this.isCheatingWithPhrases) {
             throw new IllegalStateException("unimplemented");
         } else {
-            final List<Integer> result = new ArrayList<>(this.chosenPhraseLength);
-
-            for (int i = 0; i < this.chosenPhrase.length(); i++) {
-                if (this.chosenPhrase.charAt(i) == guess.characterGuess()) {
-                    result.add(i);
-                }
-            }
-            return result;
+            return
+                IntStream.range(0, this.chosenPhrase.length())
+                         .filter(i -> this.chosenPhrase.charAt(i)
+                                      == guess.characterGuess()
+                         )
+                         .boxed()
+                         .collect(Collectors.toCollection(
+                             () -> new ArrayList<>(this.chosenPhraseLength))
+                         );
         }
     }
 
@@ -173,13 +231,6 @@ public class CanonicalHost implements Host {
         return this.chosenPhrase;
     }
 
-    private void throwIfInvalidLength (final Byte phraseLength) {
-        if (! this.dictionary.containsKey(phraseLength)) {
-            throw new IllegalArgumentException(
-                "attempt to pick non-existent phrase of length " + phraseLength +
-                " from dictionary");
-        }
-    }
 
     private String chooseRandomPhraseOfLength () {
         this.throwIfInvalidLength(this.chosenPhraseLength);

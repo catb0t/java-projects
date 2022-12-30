@@ -1,15 +1,14 @@
 import net.jqwik.api.*;
 import org.assertj.core.api.*;
 
-
 class BotTest {
     @Property
-    boolean absoluteValueOfAllNumbersIsPositive(@ForAll int anInteger) {
+    boolean absoluteValueOfAllNumbersIsPositive (@ForAll int anInteger) {
         return Math.abs(anInteger) >= 0;
     }
 
     @Property
-    void lengthOfConcatenatedStringIsGreaterThanLengthOfEach(
+    void lengthOfConcatenatedStringIsGreaterThanLengthOfEach (
         @ForAll String string1, @ForAll String string2
     ) {
         String conc = string1 + string2;

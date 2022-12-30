@@ -1,5 +1,8 @@
 package org.catb0t.project5human;
 
+import java.io.*;
+import java.net.*;
+import java.nio.file.*;
 import java.util.*;
 import java.util.stream.*;
 
@@ -35,7 +38,22 @@ public class Configuration {
         return result;
     }
 
-    Map<Byte, List<String>> dictionary () {
+    public static Configuration loadDefaultWords (
+        final String wordsName,
+        final int wordsMeanLineLength,
+        final int wordsCountDifferentLengths
+    ) throws IOException, URISyntaxException {
+        final URI wordsResource = Objects.requireNonNull(
+            Thread.currentThread().getContextClassLoader().getResource(wordsName)
+        ).toURI();
+
+        try ( final var stream = Files.lines(Paths.get(wordsResource)) ) {
+            return new Configuration(stream, wordsMeanLineLength,
+                wordsCountDifferentLengths);
+        }
+    }
+
+    public Map<Byte, List<String>> dictionary () {
         return Collections.unmodifiableMap(this.dictionary);
     }
 }
